@@ -1,0 +1,30 @@
+<div class="lamento-confirm {{ animation }}" on:click="onCanel()">
+  <section class="lamento-confirm__container" on:click="stopEvent(event)">
+    <p class="lamento-confirm__content">{{ content }}</p>
+
+    <footer class="lamento-confirm__footer">
+      <button on:click="onCanel()">{{ cancelButtonText }}</button>
+      <button class="is-primary" on:click="fire('confirm')">{{ confirmButtonText }}</button>
+    </footer>
+  </section>
+</div>
+
+<script>
+  export default {
+    data () {
+      return {
+        animation: 'is-enter'
+      }
+    },
+    methods: {
+      stopEvent ($event) {
+        $event.stopPropagation()
+      },
+
+      onCanel () {
+        this.set({ animation: 'is-destroy' })
+        setTimeout(_ => this.destroy(), 200)
+      }
+    }
+  }
+</script>

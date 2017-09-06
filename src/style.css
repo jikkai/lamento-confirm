@@ -1,0 +1,81 @@
+@component-namespace lamento {
+  @c confirm {
+    position: fixed 0;
+    size: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 500;
+    @when enter {
+      animation: fadeIn .2s;
+    }
+    @when destroy {
+      opacity: 0;
+      animation: fadeOut .2s;
+    }
+
+    @d container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 420px;
+      padding: 20px;
+      background: #FFF;
+      border-radius: 5px;
+      box-sizing: border-box;
+      transform: translate(-50%, -50%);
+    }
+
+    @d content {
+      color: #495060;
+      font-size: 14px;
+    }
+
+    @d footer {
+      text-align: right;
+
+      & button {
+        padding: 6px 15px;
+        color: #495060 #F7F7F7;
+        text-align: center;
+        font-size: 12px;
+        border: 1px solid #DDDEE1;
+        border-radius: 4px;
+        outline: 0;
+        display: inline-block;
+        cursor: pointer;
+        user-select: none;
+        transition: all .2s;
+        &:hover {
+          color: #3498DB #FFF;
+          border-color: #3498DB;
+        }
+
+        @when primary {
+          color: #FFF #3498DB;
+          border-color: #3498DB;
+          &:hover {
+          color: #FFF #52B0EF;
+          border-color: #52B0EF;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
